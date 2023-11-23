@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Input;
 using UnityEngine;
-using Weapons;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     private float turnSmoothVelocity;
 
     private InputManager inputManager;
-    private WeaponManager weaponManager;
 
     private void Start()
     {

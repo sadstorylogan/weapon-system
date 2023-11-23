@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4224275956230838406}
-  - component: {fileID: 9163365038967572906}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -64,21 +63,6 @@ Transform:
   - {fileID: 1403971825228492459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9163365038967572906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6669998840269864142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 080eef39c849acf48b60ac2e6b01129a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3480058357684382746, guid: 6f5e79aa54aa1b8469361f343a401a17,
-    type: 3}
-  shootPoint: {fileID: 1988249038707536426}
 --- !u!1001 &1399355227322596807
 PrefabInstance:
   m_ObjectHideFlags: 0

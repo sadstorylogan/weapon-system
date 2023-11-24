@@ -1,3 +1,4 @@
+using System;
 using UnityEditor.Search;
 using UnityEngine;
 
@@ -5,9 +6,13 @@ namespace Input
 {
     public class InputManager : MonoBehaviour
     {
+        public event Action OnShoot;
+        
         private PlayerControls controls;
+        
         public Vector2 move;
         public Vector2 look;
+        public bool shoot;
 
         private void Awake()
         {
@@ -19,6 +24,8 @@ namespace Input
 
             controls.Gameplay.Look.performed += ctx => look = ctx.ReadValue<Vector2>();
             controls.Gameplay.Look.canceled += ctx => look = Vector2.zero;
+
+            controls.Gameplay.Shoot.performed += ctx => OnShoot?.Invoke();
         }
 
         private void OnEnable()

@@ -16,11 +16,14 @@ public class PlayerController : MonoBehaviour
     private float turnSmoothVelocity;
 
     private InputManager inputManager;
+    private Shoot shootAction;
 
     private void Start()
     {
         inputManager = GetComponent<InputManager>();
         controller = GetComponent<CharacterController>();
+        shootAction = GetComponent<Shoot>();
+        inputManager.OnShoot += HandleShoot;
     }
 
     private void Update()
@@ -32,8 +35,8 @@ public class PlayerController : MonoBehaviour
         // Handle Smooth Rotation
         if (inputManager.look.sqrMagnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(inputManager.look.x, inputManager.look.y) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, smoothTime);
+            var targetAngle = Mathf.Atan2(inputManager.look.x, inputManager.look.y) * Mathf.Rad2Deg;
+            var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, smoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
 
@@ -46,6 +49,19 @@ public class PlayerController : MonoBehaviour
         else
         {
             playerVelocity.y = 0;
+        }
+    }
+
+    private void HandleShoot()
+    {
+        shootAction.ShootAction();
+    }
+
+    private void OnDestroy()
+    {
+        if (inputManager != null)
+        {
+            inputManager.OnShoot -= HandleShoot;
         }
     }
 }
